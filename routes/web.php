@@ -87,6 +87,5 @@ Route::prefix('administrator')->group(function() {
     Route::resource('/product-category', 'Admin\AdminProductCategoryController');
 });
 
-
 // comment
 

@@ -160,7 +160,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <div class="profile_img">
                         <span class="prfil-img">
-                            <img src="<?php echo url($user->avatar); ?>"></span>
+                            <img src="<?php //echo url($user->avatar); ?>"></span>
                         @if(Auth::check())
                         <div class="user-name">
                             <p>{{ Auth::user()->name }}</p>

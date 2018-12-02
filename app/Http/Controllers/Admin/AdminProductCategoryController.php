@@ -12,7 +12,6 @@ use File;
 use CategoryHelper;
 use Illuminate\Support\Facades\DB;
 use Auth;
-use DB;
 
 class AdminProductCategoryController extends Controller
 {
@@ -30,10 +29,10 @@ class AdminProductCategoryController extends Controller
      */
     public function index()
     {
-
+        $user = Auth::user();
         $cats = CategoryHelper::get_all_category_by_order();
 
-        return view('admin.product-category.show', compact('cats'));
+        return view('admin.product-category.show', compact('cats', 'user'));
     }
 
     /**
@@ -146,7 +145,9 @@ class AdminProductCategoryController extends Controller
             }
         }
 
-        return view('admin.product-category.edit', compact('cat', 'parents', 'option_parent'));
+        $user = Auth::user();
+
+        return view('admin.product-category.edit', compact('cat', 'parents', 'option_parent', 'user'));
     }
 
     /**

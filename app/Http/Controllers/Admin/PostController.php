@@ -28,8 +28,9 @@ class PostController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         $posts = Post::orderby('id', 'desc')->paginate(5);
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts', 'user'));
     }
 
     /**
@@ -39,7 +40,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $user = Auth::user();
+        return view('admin.posts.create', compact('user'));
     }
 
     /**
@@ -73,9 +75,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $post = Post::findOrFail($id);
 
-        return view ('admin.posts.show', compact('post'));
+        return view ('admin.posts.show', compact('post', 'user'));
     }
 
     /**
